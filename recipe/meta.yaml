@@ -6,20 +6,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/segment-anything-fast-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/segment-anything-fast-{{ version }}.tar.gz
   sha256: 778cdeceb5a1234a30f17724b2c8bfd02487130be8c05b841def12ab16b5be9c
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - pip
+    - setuptools
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - matplotlib-base >=3.2.2
     - opencv >=4.6.0
     - pillow >=7.1.2
@@ -42,6 +43,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/opengeos/FastSAM
