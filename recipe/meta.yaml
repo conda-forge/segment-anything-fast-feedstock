@@ -34,6 +34,8 @@ requirements:
     - seaborn >=0.11.0
     - gradio <=3.35.2
     - ultralytics <=8.0.122
+    # ultralytics <=8.0.122 imports pkg_resources, removed in setuptools 81
+    - setuptools <81
     - openai-clip
 
 test:
@@ -48,8 +50,12 @@ test:
 about:
   home: https://github.com/opengeos/FastSAM
   summary: Fast Segment Anything
-  license: Apache-2.0
-  license_file: LICENSE
+  license: AGPL-3.0-only AND Apache-2.0 AND MIT
+  license_file:
+    - LICENSE
+    - LICENSE-APACHE-2.0.txt
+    - LICENSE-SAMGEO-MIT.txt
+    - NOTICE
 
 extra:
   recipe-maintainers:
